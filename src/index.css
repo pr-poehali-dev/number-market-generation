@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    --background: 243 244 246;
-    --foreground: 17 24 39;
+    --background: 240 253 255;
+    --foreground: 138 43 226;
 
     --card: 255 255 255;
-    --card-foreground: 17 24 39;
+    --card-foreground: 138 43 226;
 
     --popover: 255 255 255;
-    --popover-foreground: 17 24 39;
+    --popover-foreground: 138 43 226;
 
-    --primary: 17 24 39;
+    --primary: 255 0 255;
     --primary-foreground: 255 255 255;
 
-    --secondary: 229 231 235;
-    --secondary-foreground: 17 24 39;
+    --secondary: 0 255 255;
+    --secondary-foreground: 138 43 226;
 
-    --muted: 243 244 246;
-    --muted-foreground: 107 114 128;
+    --muted: 230 230 250;
+    --muted-foreground: 147 51 234;
 
-    --accent: 245 158 11;
+    --accent: 255 105 180;
     --accent-foreground: 255 255 255;
 
-    --success: 22 163 74;
-    --success-foreground: 255 255 255;
+    --success: 0 255 127;
+    --success-foreground: 138 43 226;
 
-    --destructive: 239 68 68;
+    --destructive: 255 20 147;
     --destructive-foreground: 255 255 255;
 
-    --border: 229 231 235;
-    --input: 229 231 235;
-    --ring: 245 158 11;
+    --border: 218 112 214;
+    --input: 230 230 250;
+    --ring: 255 105 180;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,8 +101,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: "Open Sans", sans-serif;
+    background: linear-gradient(135deg, #e0f7ff 0%, #ffd6ff 50%, #d4f1f4 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 
   h1,
@@ -112,5 +115,69 @@
   h5,
   h6 {
     font-family: "Montserrat", sans-serif;
+  }
+}
+
+@layer utilities {
+  .y2k-gradient {
+    background: linear-gradient(135deg, #ff00ff, #00ffff, #ff1493);
+  }
+
+  .y2k-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 240, 255, 0.95)
+    );
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    box-shadow:
+      0 8px 32px rgba(255, 0, 255, 0.2),
+      0 0 20px rgba(0, 255, 255, 0.1);
+  }
+
+  .y2k-button {
+    background: linear-gradient(135deg, #ff1493, #ff00ff);
+    box-shadow:
+      0 4px 15px rgba(255, 0, 255, 0.4),
+      inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .y2k-plate {
+    background: linear-gradient(135deg, #fff700, #ffaa00, #fff700);
+    box-shadow:
+      0 5px 20px rgba(255, 215, 0, 0.5),
+      inset 0 2px 5px rgba(255, 255, 255, 0.7);
+    border: 3px solid #333;
+  }
+
+  .chrome-text {
+    background: linear-gradient(
+      135deg,
+      #e8e8e8 0%,
+      #fff 40%,
+      #e8e8e8 50%,
+      #fff 60%,
+      #e8e8e8 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+  }
+
+  .glow-border {
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.6),
+      0 0 40px rgba(0, 255, 255, 0.4);
+  }
+
+  .y2k-gradient-text {
+    background: linear-gradient(135deg, #ff00ff, #00ffff, #ff1493);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
   }
 }

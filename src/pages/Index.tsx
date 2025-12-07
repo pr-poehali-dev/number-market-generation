@@ -105,32 +105,32 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-primary text-primary-foreground sticky top-0 z-50 shadow-lg">
+    <div className="min-h-screen">
+      <header className="y2k-gradient text-white sticky top-0 z-50 glow-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              <Icon name="Hash" size={24} className="text-accent-foreground" />
+            <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm border-2 border-white/40">
+              <Icon name="Hash" size={24} className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold">НомерМаркет</h1>
+            <h1 className="text-2xl font-bold chrome-text">НомерМаркет</h1>
           </div>
           <nav className="hidden md:flex gap-6 items-center">
-            <a href="#catalog" className="hover:text-accent transition-colors">
+            <a href="#catalog" className="hover:text-yellow-300 transition-colors font-semibold">
               Каталог
             </a>
-            <a href="#how-it-works" className="hover:text-accent transition-colors">
+            <a href="#how-it-works" className="hover:text-yellow-300 transition-colors font-semibold">
               Как это работает
             </a>
-            <a href="#faq" className="hover:text-accent transition-colors">
+            <a href="#faq" className="hover:text-yellow-300 transition-colors font-semibold">
               FAQ
             </a>
           </nav>
           <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" className="relative bg-white hover:bg-gray-50">
+              <Button variant="outline" className="relative bg-white/90 hover:bg-white border-2 border-pink-300 hover:border-pink-400 transition-all hover:scale-105">
                 <Icon name="ShoppingCart" size={20} />
                 {cart.length > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-accent text-accent-foreground">
+                  <Badge className="absolute -top-2 -right-2 y2k-button text-white animate-pulse">
                     {cart.length}
                   </Badge>
                 )}
@@ -148,14 +148,14 @@ export default function Index() {
               ) : (
                 <div className="mt-6 space-y-4">
                   {cart.map((item) => (
-                    <Card key={item.id}>
+                    <Card key={item.id} className="y2k-card border-0">
                       <CardContent className="p-4">
                         <div className="flex justify-between items-start">
                           <div>
                             <p className="font-bold text-lg">{item.combo_display}</p>
                             <p className="text-sm text-muted-foreground">Регион: {item.region}</p>
                             <p className="text-sm text-muted-foreground">{TYPE_LABELS[item.type]}</p>
-                            <p className="font-semibold text-accent mt-2">
+                            <p className="font-semibold y2k-gradient-text mt-2">
                               {item.price.toLocaleString('ru-RU')} ₽
                             </p>
                           </div>
@@ -174,17 +174,17 @@ export default function Index() {
                   <div className="border-t pt-4">
                     <div className="flex justify-between items-center text-xl font-bold mb-4">
                       <span>Итого:</span>
-                      <span className="text-accent">{totalPrice.toLocaleString('ru-RU')} ₽</span>
+                      <span className="y2k-gradient-text">{totalPrice.toLocaleString('ru-RU')} ₽</span>
                     </div>
                     <Button
-                      className="w-full bg-success hover:bg-success/90 text-success-foreground"
+                      className="w-full y2k-button text-white hover:scale-105 transition-transform"
                       size="lg"
                       onClick={() => {
                         setIsCartOpen(false);
                         setIsCheckoutOpen(true);
                       }}
                     >
-                      Оформить заказ
+                      ✨ Оформить заказ
                     </Button>
                   </div>
                 </div>
@@ -194,26 +194,26 @@ export default function Index() {
         </div>
       </header>
 
-      <section className="bg-gradient-to-b from-primary to-primary/90 text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="y2k-gradient text-white py-20 relative overflow-hidden">
+        <div className="container mx-auto px-4 text-center animate-fade-in relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 chrome-text drop-shadow-2xl">
             Красивые автомобильные номера онлайн
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-            Выбирайте номера по региону, типу и комбинации. Оформляйте заявку за пару минут.
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto font-semibold drop-shadow-lg">
+            ✨ Выбирайте номера по региону, типу и комбинации. Оформляйте заявку за пару минут. ✨
           </p>
           <Button
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6"
+            className="y2k-button text-white text-lg px-8 py-6 hover:scale-110 transition-transform font-bold"
             onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Перейти к каталогу
+            🚀 Перейти к каталогу
             <Icon name="ArrowDown" size={20} className="ml-2" />
           </Button>
         </div>
       </section>
 
-      <section className="py-16 bg-muted/30">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -222,12 +222,12 @@ export default function Index() {
               { icon: 'Zap', title: 'Быстрая заявка', desc: 'Оформление за 2 минуты' },
               { icon: 'DollarSign', title: 'Прозрачные цены', desc: 'Честная стоимость без скрытых комиссий' },
             ].map((item, idx) => (
-              <Card key={idx} className="text-center hover:shadow-lg transition-all animate-scale-in">
+              <Card key={idx} className="text-center y2k-card hover:scale-105 transition-all animate-scale-in border-0">
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={item.icon as any} size={32} className="text-accent" />
+                  <div className="w-16 h-16 y2k-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={item.icon as any} size={32} className="text-white" />
                   </div>
-                  <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                  <h3 className="font-bold text-xl mb-2 y2k-gradient-text">{item.title}</h3>
                   <p className="text-muted-foreground">{item.desc}</p>
                 </CardContent>
               </Card>
@@ -238,7 +238,7 @@ export default function Index() {
 
       <section id="how-it-works" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Как это работает</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 y2k-gradient-text">Как это работает</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {[
               { step: '1', title: 'Выбираете номер', desc: 'Фильтруйте каталог по своим критериям' },
@@ -247,7 +247,7 @@ export default function Index() {
               { step: '4', title: 'Менеджер связывается с вами', desc: 'Получите звонок для уточнения деталей' },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-16 h-16 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 y2k-button text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-lg mb-2">{item.title}</h3>
@@ -258,11 +258,11 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="catalog" className="py-16 bg-muted/30">
+      <section id="catalog" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Каталог номеров</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 y2k-gradient-text">Каталог номеров</h2>
 
-          <div className="bg-card p-6 rounded-lg shadow-md mb-8 max-w-4xl mx-auto">
+          <div className="y2k-card p-6 rounded-2xl mb-8 max-w-4xl mx-auto border-0">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <Label htmlFor="region" className="mb-2 block">
@@ -322,9 +322,9 @@ export default function Index() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredPlates.map((plate) => (
-                <Card key={plate.id} className="hover:shadow-xl transition-all hover:-translate-y-1">
+                <Card key={plate.id} className="y2k-card hover:scale-105 transition-all border-0">
                   <CardContent className="p-6">
-                    <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg p-4 mb-4 border-2 border-gray-800">
+                    <div className="y2k-plate rounded-xl p-4 mb-4">
                       <p className="text-center text-3xl font-black tracking-wider text-gray-900">
                         {plate.combo_display}
                       </p>
@@ -341,11 +341,11 @@ export default function Index() {
                         </Badge>
                       </div>
                     </div>
-                    <p className="text-2xl font-bold text-accent mb-4">
+                    <p className="text-2xl font-bold y2k-gradient-text mb-4">
                       {plate.price.toLocaleString('ru-RU')} ₽
                     </p>
                     <Button
-                      className="w-full bg-success hover:bg-success/90 text-success-foreground"
+                      className="w-full y2k-button text-white hover:scale-105 transition-transform"
                       onClick={() => addToCart(plate)}
                     >
                       <Icon name="ShoppingCart" size={18} className="mr-2" />
@@ -361,7 +361,7 @@ export default function Index() {
 
       <section id="faq" className="py-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">FAQ</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 y2k-gradient-text">FAQ</h2>
           <div className="space-y-4">
             {[
               {
@@ -377,9 +377,9 @@ export default function Index() {
                 a: 'Да, после оформления заявки номер резервируется на 24 часа.',
               },
             ].map((item, idx) => (
-              <Card key={idx}>
+              <Card key={idx} className="y2k-card border-0">
                 <CardContent className="p-6">
-                  <h3 className="font-bold text-lg mb-2">{item.q}</h3>
+                  <h3 className="font-bold text-lg mb-2 y2k-gradient-text">{item.q}</h3>
                   <p className="text-muted-foreground">{item.a}</p>
                 </CardContent>
               </Card>
@@ -388,14 +388,14 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-primary text-primary-foreground py-8">
+      <footer className="y2k-gradient text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-lg mb-2">НомерМаркет. Демонстрационный прототип.</p>
           <div className="flex justify-center gap-6 text-sm">
-            <a href="#" className="hover:text-accent transition-colors">
+            <a href="#" className="hover:text-yellow-300 transition-colors">
               О сервисе
             </a>
-            <a href="#" className="hover:text-accent transition-colors">
+            <a href="#" className="hover:text-yellow-300 transition-colors">
               Политика конфиденциальности
             </a>
           </div>
@@ -410,16 +410,17 @@ export default function Index() {
 
           {orderNumber ? (
             <div className="flex flex-col items-center justify-center h-96 text-center animate-scale-in">
-              <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mb-6">
-                <Icon name="CheckCircle" size={48} className="text-success" />
+              <div className="w-20 h-20 y2k-gradient rounded-full flex items-center justify-center mb-6">
+                <Icon name="CheckCircle" size={48} className="text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Заявка отправлена!</h3>
+              <h3 className="text-2xl font-bold mb-4 y2k-gradient-text">✨ Заявка отправлена! ✨</h3>
               <p className="text-lg mb-2">Номер вашей заявки:</p>
-              <p className="text-3xl font-bold text-accent mb-6">{orderNumber}</p>
+              <p className="text-3xl font-bold y2k-gradient-text mb-6">{orderNumber}</p>
               <p className="text-muted-foreground mb-8">
                 Наш менеджер свяжется с вами в ближайшее время.
               </p>
               <Button
+                className="y2k-button text-white"
                 onClick={() => {
                   setOrderNumber('');
                   setIsCheckoutOpen(false);
@@ -489,7 +490,7 @@ export default function Index() {
               </div>
 
               <div className="border-t pt-4">
-                <h4 className="font-bold text-lg mb-3">Ваш заказ:</h4>
+                <h4 className="font-bold text-lg mb-3 y2k-gradient-text">Ваш заказ:</h4>
                 <div className="space-y-2 mb-4">
                   {cart.map((item) => (
                     <div key={item.id} className="flex justify-between text-sm">
@@ -500,14 +501,14 @@ export default function Index() {
                 </div>
                 <div className="flex justify-between items-center text-xl font-bold mb-6">
                   <span>Итого:</span>
-                  <span className="text-accent">{totalPrice.toLocaleString('ru-RU')} ₽</span>
+                  <span className="y2k-gradient-text">{totalPrice.toLocaleString('ru-RU')} ₽</span>
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-success hover:bg-success/90 text-success-foreground"
+                  className="w-full y2k-button text-white hover:scale-105 transition-transform"
                   size="lg"
                 >
-                  Отправить заявку
+                  ✨ Отправить заявку
                 </Button>
               </div>
             </form>
